@@ -1,0 +1,16 @@
+doctype html
+html
+  head
+    title Lemmoney
+    = csrf_meta_tags
+    = csp_meta_tag
+    
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    = render Layout::Navbar::Component.new(user: current_user)
+    = render Layout::Alert::Component.new(title: notice, type: 'success') if notice
+    = render Layout::Alert::Component.new(title: alert, type: 'warning') if alert
+
+    main.container.my-5
+      = yield
