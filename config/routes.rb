@@ -5,7 +5,6 @@ Rails.application.routes.draw do
     sign_out: 'logout',
     registration: 'register',
     sign_up: 'new'
-
   },
   controllers: {
     registrations: 'users/registrations',
@@ -22,4 +21,9 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :offers, only: [:index]
+
+  namespace :users do
+    resources :offers
+  end
 end
