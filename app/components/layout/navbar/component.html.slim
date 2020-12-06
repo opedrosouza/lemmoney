@@ -7,6 +7,8 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light.shadow
       ul.navbar-nav.ml-auto
         li.nav-item.active
           = link_to 'Home', unauthenticated_root_path, class: 'nav-link'
+        li.nav-item
+          = link_to 'Offers', offers_path, class: 'nav-link'
         - if @user.nil?
           li.nav-item
             = link_to 'Login', new_user_session_path, class: 'nav-link'
@@ -15,8 +17,8 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light.shadow
         - else
           li.nav-item.dropdown
             a#navbarDropdown.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" = @user.email.split('@').first.camelize
-            .dropdown-menu aria-labelledby="navbarDropdown" 
-              a.dropdown-item href="#"  Action
-              a.dropdown-item href="#"  Another action
+            .dropdown-menu aria-labelledby="navbarDropdown"
+              = link_to 'My Offers', users_offers_path, class: 'dropdown-item' 
+              = link_to 'New Offer', new_users_offer_path, class: 'dropdown-item' 
               .dropdown-divider
               = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'dropdown-item text-danger'
