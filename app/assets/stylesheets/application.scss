@@ -1,1 +1,10 @@
 @import '../../../node_modules/bootstrap/scss/bootstrap';
+
+.text-premium {
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  padding: 5px;
+  font-size: 0.8rem;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, .5);
+}

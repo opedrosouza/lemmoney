@@ -1,0 +1,27 @@
+h1 My Offers
+
+.my-offers.mt-5
+  - if @offers.count > 0
+    table.table
+      thead.thead-dark
+        tr
+          th scope="col"  Name
+          th scope="col"  Url
+          th scope="col"  Status
+          th scope="col"  Actions
+      tbody
+        - @offers.each do |offer|
+          tr
+            td = offer.advertiser_name
+            td = offer.url
+            td = offer.status
+            td
+              .btn-group aria-label=("Basic example") role="group" 
+                = link_to 'Edit', edit_users_offer_path(offer), class: 'btn btn-info'
+                = link_to 'Disable', disable_users_offer_path(offer), class: 'btn btn-warning', method: :patch if offer.enabled?
+                = link_to 'Enable', enable_users_offer_path(offer), class: 'btn btn-success', method: :patch if offer.disabled?
+                = link_to 'Destroy', users_offer_path(offer), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }
+
+
+  - else
+    h4 You haven't offers created yet. :(

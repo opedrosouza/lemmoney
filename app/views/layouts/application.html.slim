@@ -11,6 +11,7 @@ html
     = render Layout::Navbar::Component.new(user: current_user)
     = render Layout::Alert::Component.new(title: notice, type: 'success') if notice
     = render Layout::Alert::Component.new(title: alert, type: 'warning') if alert
+    = render Layout::Alert::Component.new(title: flash[:error], type: 'error') if flash[:error]
 
     main.container.my-5
       = yield
