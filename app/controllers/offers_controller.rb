@@ -1,5 +1,8 @@
 class OffersController < ApplicationController
   def index
-    @offers = Offer.enableds
+    UpdateOffersJob.perform_now
+    offers = Offer.enableds
+    @offers = offers.where.not(premium: true)
+    @premium = offers.premium
   end
 end

@@ -1,9 +1,26 @@
 h2 All Offers
-.row
-  - @offers&.each do |offer|
-    .col-lg-3.col-md-4.col-12
-      a href=offer.url target="blank" title=offer.advertiser_name
-        .card.p-4.shadow
-          h3 = offer.advertiser_name
-          p = offer.description
+- if @premium.count > 0
+  .row.mb-5.mt-3
+    - @premium&.each do |offer|
+      .col-lg-3.col-md-4.col-12
+        .card.p-4.shadow.border-danger
+          span.text-center.bg-danger.text-white.font-weight-bold.rounded.mb-2.text-premium premium
+          .card-body.text-center
+            h3.font-weigth-bold = offer.advertiser_name
+            p = offer.description
+            a.btn.btn-outline-danger.font-weight-bold href=offer.url target="blank" title=offer.advertiser_name Shop Now
 
+- if @offers.count > 0
+  .row
+    - @offers&.each do |offer|
+      .col-lg-3.col-md-4.col-12
+        .card.p-4.shadow.border-primary
+          .card-body.text-center
+            h3.font-weigth-bold = offer.advertiser_name
+            p = offer.description
+            a.btn.btn-outline-primary.font-weight-bold href=offer.url target="blank" title=offer.advertiser_name Shop Now
+
+- unless @offers.count > 0 && @premium.count > 0
+  .row
+    .col-12
+      h3 Theres no offer to show right now. :(

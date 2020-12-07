@@ -14,7 +14,7 @@ class Users::OffersController < ApplicationController
 
   def create
     @offer = current_user&.offers.new offer_params
-    @offer.status = 0
+    @offer.status = 'disabled'
     if @offer.save
       redirect_to users_offers_path, notice: 'Offer created successfully'
     else
@@ -27,6 +27,8 @@ class Users::OffersController < ApplicationController
 
   def update
     if @offer.update offer_params
+      @offer.disabled_by_owner = false
+      @offer.save
       redirect_to request.referrer, notice: 'Offer updated successfully'
     else
       flash[:error] = @offer.errors.full_messages
@@ -45,7 +47,7 @@ class Users::OffersController < ApplicationController
   end
 
   def disable
-    @offer.disabled!
+    @offer.update(status: 'disabled', ends_at: nil, disabled_by_owner: true)
     redirect_to request.referrer, notice: 'Offer disabled successfully'
   end
 

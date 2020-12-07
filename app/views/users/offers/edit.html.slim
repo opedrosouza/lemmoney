@@ -6,20 +6,19 @@ h2 Edit Offer
     = f.text_field :advertiser_name, placeholder: 'Ex: Nike', required: true, class: 'form-control'
   .form-group
     = f.label :url, "Offer Link"
-    = f.text_field :url, placeholder: 'Ex: https://nike.com?offer=odekod', required: true, class: 'form-control'
+    = f.url_field :url, placeholder: 'Ex: https://nike.com?offer=odekod', required: true, class: 'form-control'
   .form-group
     = f.label :description, "Offer Description"
     = f.text_area :description, placeholder: 'Ex: 50% off on shoes...', required: true, class: 'form-control'
   .form-group
     = f.label :starts_at, "Offer Starts"
-    = f.datetime_field :starts_at, placeholder: 'Ex: 50% off on shoes...', required: true, class: 'form-control'
+    = f.datetime_field :starts_at, required: true, class: 'form-control'
   .form-group
     = f.label :ends_at, "Offer Ends"
-    = f.datetime_field :ends_at, placeholder: 'Ex: 50% off on shoes...', required: true, class: 'form-control'
+    = f.datetime_field :ends_at, class: 'form-control'
   .form-group
-    = f.label :premium, "Is a Premium offer?"
-    br
     = f.check_box :premium
+    = f.label :premium, "Is a Premium offer?", class: 'ml-2'
   .form-group
     = f.submit 'Save', class: 'btn btn-primary'
 
