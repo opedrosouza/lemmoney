@@ -1,24 +1,29 @@
-# README
+# CASHBACKLOVER
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+CashbackLover is a simple Rails 6 app that users can post offers of any products or sites.
 
-Things you may want to cover:
+## INSTALL INSTRUCTIONS
 
-* Ruby version
+#### Ruby/Rails version
 
-* System dependencies
+Ruby version: 2.6.6
+Rails version: 6.0.3.4
+Database: Postregsql
 
-* Configuration
+#### Run commands
 
-* Database creation
+    $ git clone git@github.com:opedrosouza/lemmoney.git cashbacklover
+    $ cd chashbacklover
+    $ bundle install
+    $ rails db:create db:migrate
+    $ rails s
 
-* Database initialization
 
-* How to run the test suite
+## RUN TESTS
+The tests was created on top of Rspec and Capybara focused on feature tests.
+Run in your console:
 
-* Services (job queues, cache servers, search engines, etc.)
+    $ rspec
 
-* Deployment instructions
-
-* ...
+## VISIT WEBAPP
+You can visit and test the online version of the app that is hosted at Heroku on: https://cashbacklover.herokuapp.com/
