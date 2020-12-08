@@ -8,5 +8,16 @@ class Offer < ApplicationRecord
 
   scope :enableds, -> { where(:status => 'enabled') }
   scope :premium, -> { where(:premium => true) }
+  scope :with_name, ->(name){ where('advertiser_name LIKE ?',"%#{name}%") }
+  scope :with_desription, ->(desription){ where('description LIKE ?',"%#{description}%") }
 
+  def self.search(params)
+    offer = self
+    params.each do | param, value |
+      if !value.empty? && self.respond_to?(param)
+        offer = offer.send(param, value)
+      end
+    end
+    return offer
+  end
 end

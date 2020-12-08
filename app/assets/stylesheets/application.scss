@@ -1,4 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import '../../../node_modules/bootstrap/scss/bootstrap';
+
+
+body, html {
+  font-family: 'Poppins', sans-serif;
+}
 
 .text-premium {
   position: absolute;
