@@ -1,19 +1,11 @@
 - unless current_user
   .jumbotron
-    h1.display-4.font-weight-bold.text-center CashBackLover
-    p.lead This is a simple app created with Rails 6 to improve my skills.
-    hr.my-4/
-    p If you want try. Please create a free account!
-    = link_to 'Open Account', new_user_registration_path, class: 'btn btn-primary btn-lg' 
+    h1.display-4.font-weight-bold.text-center.mb-4.font-title CashBackLover
+    p.lead.text-center Find the best discount for you!
+    = render Layout::Search::Component.new
 
 - if @premium.count > 0
   h2 Premium Offers
   .row.mb-5.mt-3
     - @premium&.each do |offer|
-      .col-lg-3.col-md-4.col-12
-        .card.p-4.shadow.border-danger
-          span.text-center.bg-danger.text-white.font-weight-bold.rounded.mb-2.text-premium premium
-          .card-body.text-center
-            h3.font-weigth-bold = offer.advertiser_name
-            p = offer.description
-            a.btn.btn-outline-danger.font-weight-bold href=offer.url target="blank" title=offer.advertiser_name Shop Now
+      = render Layout::Offer::Component.new(offer: offer)

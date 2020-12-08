@@ -1,0 +1,8 @@
+.container
+  .row.d-flex.justify-content-center.align-items-center.my-5
+    .col-12
+      = form_with url: pages_search_path, method: :get, local: true do |f| 
+        .input-group
+          input.form-control.form-control-lg name="with_name" aria-describedby="button-search" aria-label="Search Offers" placeholder="Search Offers" type="search"
+          .input-group-append
+            button#button-search.btn.btn-lg.btn-outline-info type="submit" Search

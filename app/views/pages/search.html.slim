@@ -1,0 +1,5 @@
+- if @offers.count > 0
+  h2 Searched Offers
+  .row.mb-5.mt-3
+    - @offers&.each do |offer|
+      = render Layout::Offer::Component.new(offer: offer)

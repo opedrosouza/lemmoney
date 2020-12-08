@@ -1,0 +1,8 @@
+.col-lg-3.col-md-4.col-12
+  .card.p-4.shadow class="border-#{offer_class}"
+    - if @offer.premium
+      span.text-center.text-white.font-weight-bold.rounded.mb-2.text-premium class="bg-#{offer_class}" premium
+    .card-body.text-center
+      h3.font-weigth-bold = @offer.advertiser_name
+      p = @offer.description
+      a.btn.font-weight-bold href=@offer.url target="blank" title=@offer.advertiser_name class="btn-outline-#{offer_class}" Shop Now
